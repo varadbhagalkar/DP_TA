@@ -6,12 +6,7 @@ import java.util.Iterator;
 public class EmployeeList {
     //singleton for employee
     ArrayList<Employee> empList=new ArrayList<>();
-    private EmployeeList(){
-        singleton.addEmp(new HR("ved","111","12345678",100000));
-        singleton.addEmp(new ProjectLeader("Rahul","112","123123",70000));
-        singleton.addEmp(new TeamLeader("varad","113","123",70000));
-        singleton.addEmp(new Programmer("paliwal","114","123123",70000));
-    }
+    private EmployeeList(){}
 
     private static final EmployeeList singleton=new EmployeeList();
 
@@ -22,8 +17,8 @@ public class EmployeeList {
     public void removeEmp(String eid){
         Iterator itr = empList.iterator();
         while(itr.hasNext()){
-            String listEid=(String)itr.next();
-            if (eid.equals(listEid)){
+           Employee listEid=(Employee) itr.next();
+            if (eid.equals(listEid.eid)){
                 itr.remove();
             }
         }
@@ -72,7 +67,7 @@ public class EmployeeList {
     public void leave(String eid, int days){
         for(Employee emp:empList){
             if(emp.eid.equals(eid)){
-                emp.ApproveLeave(eid, days);
+                emp.applyLeave( days);
             }
         }
     }
@@ -80,7 +75,7 @@ public class EmployeeList {
     public void raise(String eid, int amt){
         for(Employee emp:empList){
             if(emp.eid.equals(eid)){
-                emp.ApproveRaise(eid, amt);
+                emp.applyRaise(amt);
             }
         }
     }

@@ -34,11 +34,11 @@ public class HR extends Employee{
 
     @Override
     public void applyLeave(int numberOfDaysLeave) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        System.out.println("Hr cannot ask for leave");
     }
 
     @Override
     public void applyRaise(int amountOfRaise) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("HR's salary will be increase to 1234456776");
     }
 }

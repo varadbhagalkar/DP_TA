@@ -24,10 +24,7 @@ public class TeamLeader extends Employee {
             System.out.println("Leave for the employee "+ eid+" is forwarded to Project Leader");
             supervisor.ApproveLeave(eid, numberofDaysLeave);
         }
-
-
     }
-
 
     @Override
     public void applyRaise(int amountOfRaise) {
