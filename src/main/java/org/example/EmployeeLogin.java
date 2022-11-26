@@ -15,7 +15,7 @@ public class EmployeeLogin implements Proxy{
     @Override
     public void gotoInterface() {
         if(singleton.check(eid,password)){
-            new EmployeeInterface(eid,password);
+            EmployeeInterface employeeInterface = new EmployeeInterface(eid,password);
         }
     }
     //proxy for checking employee

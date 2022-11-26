@@ -1,6 +1,7 @@
 package org.example;
 
 public class TeamLeader extends Employee {
+    private final int MAX_RAISE_CAN_APPROVE = 30000;
     private final int MAX_LEAVES_CAN_APPROVE = 10;
 
     TeamLeader(String name, String eid, String password, int salary) {
@@ -9,6 +10,7 @@ public class TeamLeader extends Employee {
 
     @Override
     public void applyLeave(int numberofDaysLeave) {
+        System.out.println("Leave for the employee "+ eid+" is forwarded to Project Leader");
         supervisor.ApproveLeave(this.eid, numberofDaysLeave);
     }
 
@@ -19,6 +21,7 @@ public class TeamLeader extends Employee {
             System.out.println("TeamLeader approved " + numberofDaysLeave + " days " + "Leave for the employee : "
                     + eid);
         } else {
+            System.out.println("Leave for the employee "+ eid+" is forwarded to Project Leader");
             supervisor.ApproveLeave(eid, numberofDaysLeave);
         }
 
@@ -32,7 +35,13 @@ public class TeamLeader extends Employee {
     }
 
     @Override
-    void ApproveRaise(String eid, int numberofDaysLeave) {
-
+    void ApproveRaise( String eid, int amountOfRaise){
+        if( amountOfRaise <= MAX_RAISE_CAN_APPROVE ){
+           EmployeeList l1 = EmployeeList.returnList();
+           l1.salEdit(eid,amountOfRaise);
+       }
+       else{
+          supervisor.ApproveRaise(eid, amountOfRaise);
+       }
     }
 }

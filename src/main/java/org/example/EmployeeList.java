@@ -1,15 +1,19 @@
 package org.example;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class EmployeeList {
     //singleton for employee
     ArrayList<Employee> empList=new ArrayList<>();
-    private EmployeeList(){}
+    private EmployeeList(){
+        singleton.addEmp(new HR("ved","111","12345678",100000));
+        singleton.addEmp(new ProjectLeader("Rahul","112","123123",70000));
+        singleton.addEmp(new TeamLeader("varad","113","123",70000));
+        singleton.addEmp(new Programmer("paliwal","114","123123",70000));
+    }
 
-    private static EmployeeList singleton=new EmployeeList();
+    private static final EmployeeList singleton=new EmployeeList();
 
     public void addEmp(Employee emp){
         empList.add(emp);
@@ -19,7 +23,7 @@ public class EmployeeList {
         Iterator itr = empList.iterator();
         while(itr.hasNext()){
             String listEid=(String)itr.next();
-            if (eid==listEid){
+            if (eid.equals(listEid)){
                 itr.remove();
             }
         }
@@ -27,7 +31,7 @@ public class EmployeeList {
 
     public void salEdit(String eid,int updatedSal){
         for(Employee emp:empList){
-            if(emp.eid==eid){
+            if(emp.eid.equals(eid)){
                 emp.salary=updatedSal;
             }
         }
@@ -39,22 +43,46 @@ public class EmployeeList {
 
     public void edit(String name,String password,String eid){
         for(Employee emp:empList){
-            if(emp.eid==eid){
+            if(emp.eid.equals(eid)){
                 emp.name=name;
                 emp.password=password;
+            }
+        }
+    }
+    
+    public void details(String eid){
+        for(Employee emp:empList){
+            if(emp.eid.equals(eid)){
+                System.out.println("Employee ID : "+ emp.eid);
+                System.out.println("Name : "+ emp.name);
+                System.out.println("Salary : "+ emp.salary);
             }
         }
     }
 
     public boolean check(String eid,String password){
         for(Employee emp:empList){
-            if(emp.eid==eid){
-                return emp.password==password;
+            if(emp.eid.equals(eid)){
+                return emp.password.equals(password);
             }
         }
         return false;
     }
+    
+    public void leave(String eid, int days){
+        for(Employee emp:empList){
+            if(emp.eid.equals(eid)){
+                emp.ApproveLeave(eid, days);
+            }
+        }
+    }
 
-
+    public void raise(String eid, int amt){
+        for(Employee emp:empList){
+            if(emp.eid.equals(eid)){
+                emp.ApproveRaise(eid, amt);
+            }
+        }
+    }
 
 }
