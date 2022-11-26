@@ -46,6 +46,15 @@ public class EmployeeList {
         }
     }
 
+    public boolean check(String eid,String password){
+        for(Employee emp:empList){
+            if(emp.eid==eid){
+                return emp.password==password;
+            }
+        }
+        return false;
+    }
+
 
 
 }
