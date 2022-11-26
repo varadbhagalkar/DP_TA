@@ -2,9 +2,9 @@ package org.example;
 
 
 public abstract class Employee {
-    protected String name, eid, password;
-    protected int salary;
-    protected Employee supervisor;
+    String name, eid, password;
+    int salary;
+    Employee supervisor;
 
     Employee(String name, String eid, String password, int salary) {
         this.name = name;

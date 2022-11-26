@@ -26,11 +26,9 @@ public class EmployeeList {
     }
 
     public void salEdit(String eid,int updatedSal){
-        Iterator itr = empList.iterator();
-        while(itr.hasNext()){
-            String listEid=(String)itr.next();
-            if (eid==listEid){
-                itr.salary=updatedSal;
+        for(Employee emp:empList){
+            if(emp.eid==eid){
+                emp.salary=updatedSal;
             }
         }
     }
@@ -40,12 +38,10 @@ public class EmployeeList {
     }
 
     public void edit(String name,String password,String eid){
-        Iterator itr = empList.iterator();
-        while(itr.hasNext()){
-            String listEid=(String)itr.next();
-            if (eid==listEid){
-                itr.name=name;
-                itr.password=password;
+        for(Employee emp:empList){
+            if(emp.eid==eid){
+                emp.name=name;
+                emp.password=password;
             }
         }
     }
